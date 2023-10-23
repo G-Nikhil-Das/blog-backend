@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser'
 import mongoose from "mongoose";
 import userRouter from './routes/user-routes'
 import blogRouter from './routes/blog-routes'
+const PORT = process.env.PORT || 5000
 const app = express()
 import path from 'path';
 const __dirname = path.resolve();
@@ -17,4 +18,4 @@ app.use("/blog", blogRouter);
 
 mongoose.connect('mongodb+srv://gnikhildas98:8uYTJgrUzjAIDyxa@cluster0.gidmgfr.mongodb.net/mern-blog?retryWrites=true&w=majority')
 
-app.listen(5000)
+app.listen(PORT)

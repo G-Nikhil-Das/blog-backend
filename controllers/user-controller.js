@@ -36,6 +36,8 @@ export const login = async (req,res)=> {
                       id:user._id,
                       name: user.name,
                     });
+                    localStorage.setItem('jwtTokenLS',token)
+                    console.log(localStorage.getItem('jwtTokenLS'))
                 });
             } else {
                 res.status(400).json('Wrong Credentials')
@@ -47,7 +49,8 @@ export const login = async (req,res)=> {
 }
 
 export const profile = (req,res) => {
-    const {token} = req.cookies;
+    // const {token} = req.cookies;
+    const token = localStorage.getItem('jwtTokenLS')
     if(token) {
         jwt.verify(token, secret, {}, async(err,info) => {
             if (err) throw err;
@@ -63,5 +66,6 @@ export const profile = (req,res) => {
 }
 
 export const logout = (req,res) => {
+    localStorage.setItem('jwtTokenLS','')
     res.cookie('token', '').json('ok');
 }

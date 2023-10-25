@@ -45,7 +45,8 @@ export const postBlog = async (req,res) => {
     const parts = originalname.split('.');
     const newPath = path+'.'+parts[parts.length - 1];
     fs.renameSync(path, newPath);
-    const {token} = req.cookies;
+    const token = localStorage.getItem('jwtTokenLS')
+    // const {token} = req.cookies;
     jwt.verify(token, secret, {}, async (err,info) => {
         if (err) throw err;
         const {title,description} = req.body;
@@ -69,7 +70,8 @@ export const editBlog = async (req,res) => {
         newPath = path+'.'+ext;
         fs.renameSync(path, newPath);
     }
-    const {token} = req.cookies;
+    // const {token} = req.cookies;
+    const token = localStorage.getItem('jwtTokenLS')
     jwt.verify(token, secret, {}, async (err,info) => {
         if (err) throw err;
         const {id,title,description,comment} = req.body;

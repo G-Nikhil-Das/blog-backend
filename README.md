@@ -37,3 +37,9 @@ Multer : Primarily used for uploading files
 https://www.npmjs.com/package/multer
 To install :
 npm i multer
+
+
+node-localstorage
+https://www.npmjs.com/package/node-localstorage
+To install :
+npm i node-localstorage
